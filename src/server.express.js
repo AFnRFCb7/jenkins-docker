@@ -1,6 +1,6 @@
 (function(express, spawn){
     "use strict";
-    return express().
+    return express()
 	.get("/", function(request, response){
 	    return spawn("/usr/bin/systemctl", ["status", "jenkins.service"])
 		.then(function(success){
@@ -9,5 +9,5 @@
 		    return response.send("FAILURE:\t"+JSON.stringify(rageguy));
 		});
 	})
-	.listen(22815)
+	.listen(3000)
 }(require("express"), require("child-process.promise").spawn));
